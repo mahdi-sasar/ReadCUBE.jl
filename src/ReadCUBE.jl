@@ -3,20 +3,21 @@ export ReadCube
 """
 A simple CUBE file reader for Cartesian coordinate system.
 """
-function ReadCube(Address::String, Verbose::Boolean)
+function ReadCube(Address::String, Verbose::Bool, Delim::Char)
     inputFile = open(Address, "r")
     Lines = readlines(inputFile)
     close(inputFile)
+    GC.gc()
     # Skip the comments section in the CUBE file:
     Lines = Lines[3:end]
-    line1 = split(Lines[1], ' ')
-    line2 = split(Lines[2], ' ')
-    line3 = split(Lines[3], ' ')
-    line4 = split(Lines[4], ' ')
-    L1 = [ ]
-    L2 = [ ]
-    L3 = [ ]
-    L4 = [ ]
+    line1 = split(Lines[1], Delim)
+    line2 = split(Lines[2], Delim)
+    line3 = split(Lines[3], Delim)
+    line4 = split(Lines[4], Delim)
+    L1 = Float64[ ]
+    L2 = Float64[ ]
+    L3 = Float64[ ]
+    L4 = Float64[ ]
     for index in 1:length(line1)
         if !isnothing(tryparse(Float64, line1[index]))
             push!(L1, parse(Float64, line1[index]))
@@ -62,19 +63,20 @@ function ReadCube(Address::String, Verbose::Boolean)
     newLine = split(newLine, ' ')
     # Start reading the electron density. Some clever workarounds here!
     index = 1
+    Density = zeros(Nx, Ny, Nz)
     for ix in 1:Nx
         for iy in 1:Ny
             for iz in 1:Nz
                 while isnothing(tryparse(Float64,newLine[index]))
                     if index < length(newLine)
-                        global index += 1
+                        index += 1
                     else
                         break
                     end
                 end
                 if index < length(newLine)
                     Density[ix, iy, iz] = parse(Float64, newLine[index])
-                    global index += 1
+                    index += 1
                 else
                     break
                 end
@@ -83,3 +85,7 @@ function ReadCube(Address::String, Verbose::Boolean)
     end
     return Density
 end
+
+
+
+
