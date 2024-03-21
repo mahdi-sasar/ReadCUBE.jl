@@ -32,7 +32,7 @@ The function is defined as ReadCube(::String, ::Bool, ::Char).
   z directions.
 - The third and final argument is a character, which tells the function how to separate
   data in the CUBE file. The default value should be ' ' (i.e. SPACE) for a standard
-  Gaussian output file. However, I also generate CUBE files form my own program and I use
+  Gaussian output file. However, I also generate CUBE files from my own program and I use
   TAB to separate data in the output file. For a TAB separated file, one must set the
   third argument to '\t'.
 
