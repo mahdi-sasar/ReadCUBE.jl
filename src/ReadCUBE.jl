@@ -1,8 +1,5 @@
 export ReadCube
 
-"""
-A simple CUBE file reader for Cartesian coordinate system.
-"""
 function ReadCube(Address::String, Verbose::Bool, Delim::Char)
     inputFile = open(Address, "r")
     Lines = readlines(inputFile)
