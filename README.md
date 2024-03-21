@@ -45,6 +45,7 @@ his stuff, but his version of the code might be better suited for integration wi
 whole DFTK.jl environment.
 
 ## TODO:
+- [ ] Provide an example test in the test folder.
 - [ ] Add flexibility for non-Cartesian CUBE files.
 - [ ] Store and maybe export the XYZ coordiantes.
 - [ ] Make the reading of the initial file *lazy* to avoid memory hogging and increase speed.
