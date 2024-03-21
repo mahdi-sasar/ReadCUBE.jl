@@ -1,4 +1,4 @@
-name = "ReadCUBE.jl"
+name = "ReadCUBE"
 uuid = "f8340653-ef1b-4b68-bd92-c32cdbb60e2c"
 authors = ["Mahdi Sasar"]
 version = "1.0"
