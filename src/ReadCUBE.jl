@@ -4,7 +4,6 @@ function ReadCube(Address::String, Verbose::Bool, Delim::Char)
     inputFile = open(Address, "r")
     Lines = readlines(inputFile)
     close(inputFile)
-    GC.gc()
     # Skip the comments section in the CUBE file:
     Lines = Lines[3:end]
     line1 = split(Lines[1], Delim)
