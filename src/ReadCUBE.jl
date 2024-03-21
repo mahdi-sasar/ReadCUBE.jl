@@ -1,4 +1,4 @@
-#export ReadCube
+export ReadCube
 
 function ReadCube(Address::String, Verbose::Bool, Delim::Char)
     inputFile = open(Address, "r")
